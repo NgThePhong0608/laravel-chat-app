@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::prefix('conversation')->group(function () {
+    Route::get('/{id}', [MessagesController::class, 'conversation'])->name('messages.conversation');
+    Route::post('/send', [MessagesController::class, 'sendMessage'])->name('messages.send');
+});
