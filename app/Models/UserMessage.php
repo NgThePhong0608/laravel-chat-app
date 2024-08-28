@@ -16,4 +16,9 @@ class UserMessage extends Model
     {
         return $this->belongsTo(Message::class);
     }
+
+    public function message_group()
+    {
+        return $this->belongsTo(MessageGroup::class);
+    }
 }
